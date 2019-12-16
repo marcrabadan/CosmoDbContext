@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>CosmosDbFramework.Extensions.DependencyInjection</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Marc Rabadan Fuertes</Authors>
+    <Company>Marc Rabadan Fuertes</Company>
+    <Product>CosmosDbFramework</Product>
+    <Description>CosmosDbFramework enables .NET developers to work with a MongoDb database using .NET objects.</Description>
+    <Copyright>Marc Rabadan Fuertes 2020</Copyright>
+    <PackageProjectUrl>https://github.com/marcrabadan/CosmosDbFramework</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/marcrabadan/CosmosDbFramework</RepositoryUrl>
+    <PackageTags>MongoDbFramework, DbContext, mongodb, framework, persistence, infrastructure, azure cosmos, cosmos, entity, documents</PackageTags>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CosmosDbFramework\CosmosDbFramework.csproj" />
+  </ItemGroup>
+
+</Project>

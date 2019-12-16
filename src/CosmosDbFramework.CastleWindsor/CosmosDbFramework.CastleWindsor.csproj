@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Marc Rabadan Fuertes</Authors>
+    <Company>Marc Rabadan Fuertes</Company>
+    <Product>MongoDbContext</Product>
+    <Description>MongoDbContext enables .NET developers to work with a MongoDb database using .NET objects.</Description>
+    <Copyright>Marc Rabadan Fuertes 2020</Copyright>
+    <PackageProjectUrl>https://github.com/marcrabadan/CosmosDbFramework</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/marcrabadan/CosmosDbFramework</RepositoryUrl>
+    <PackageTags>CosmosDbFramework, DbContext, framework, persistence, infrastructure, azure cosmos, cosmos, entity, documents</PackageTags>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Windsor" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CosmosDbFramework\CosmosDbFramework.csproj" />
+  </ItemGroup>
+
+</Project>
