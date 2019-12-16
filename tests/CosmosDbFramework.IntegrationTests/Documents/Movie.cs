@@ -7,7 +7,6 @@ namespace CosmosDbFramework.IntegrationTests.Documents
 {
     public class Movie
     {
-        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         public string Name { get; set; }

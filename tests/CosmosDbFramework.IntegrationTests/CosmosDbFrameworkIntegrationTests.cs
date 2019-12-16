@@ -15,7 +15,7 @@ namespace CosmosDbFramework.IntegrationTests
             _videoStoreContext = cosmosFixture.VideoStoreContext;
         }
 
-        [Fact(Skip = "Configure")]
+        [Fact]
         public async Task Test1()
         {
             var actor = new Documents.Actor

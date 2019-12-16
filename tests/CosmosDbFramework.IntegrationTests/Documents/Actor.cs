@@ -7,7 +7,6 @@ namespace CosmosDbFramework.IntegrationTests.Documents
 {
     public class Actor
     {
-        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         public string FirstName { get; set; }
@@ -17,10 +16,5 @@ namespace CosmosDbFramework.IntegrationTests.Documents
         public string Country { get; set; }
 
         public string Locality { get; set; }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
     }
 }
