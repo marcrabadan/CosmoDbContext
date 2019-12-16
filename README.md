@@ -9,11 +9,6 @@
 | [CosmosDbFramework.CastleWindsor](https://www.nuget.org/packages/CosmosDbFramework.CastleWindsor/) | [![CosmosDbFramework.CastleWindsor](https://img.shields.io/nuget/v/CosmosDbFramework.CastleWindsor.svg)](https://www.nuget.org/packages/CosmosDbFramework.CastleWindsor/) |
 | [CosmosDbFramework.Extensions.DependencyInjection](https://www.nuget.org/packages/CosmosDbFramework.Extensions.DependencyInjection/) | [![CosmosDbFramework.Extensions.DependencyInjection](https://img.shields.io/nuget/v/CosmosDbFramework.Extensions.DependencyInjection.svg)](https://www.nuget.org/packages/CosmosDbFramework.Extensions.DependencyInjection/) |
 
-## IoC Providers:
- - Service Collection
- - Autofac
- - Windsor Castle
-
 ## Installation & Configuration: 
 
 | Package Manager | .NET CLI | 
