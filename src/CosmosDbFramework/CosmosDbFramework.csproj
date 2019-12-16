@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Marc Rabadan Fuertes 2020</Copyright>
+    <Company>Marc Rabadan Fuertes</Company>
+    <Authors>Marc Rabadan Fuertes</Authors>
+    <Description>CosmosDbFramework enables .NET developers to work with a CosmosDb database using .NET objects.</Description>
+    <PackageProjectUrl>https://github.com/marcrabadan/CosmosDbFramework</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/marcrabadan/CosmosDbFramework</RepositoryUrl>
+    <PackageTags>CosmosDbFramework, DbContext, framework, persistence, infrastructure, azure cosmos, cosmos, entity, documents</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
