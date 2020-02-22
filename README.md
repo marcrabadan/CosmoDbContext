@@ -1,4 +1,4 @@
-# CosmosDbFramework
+# CosmosDbContext
 
 ## Packages:
 
