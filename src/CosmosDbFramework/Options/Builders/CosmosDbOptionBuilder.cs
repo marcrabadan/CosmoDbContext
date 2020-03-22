@@ -1,5 +1,5 @@
-﻿using Azure.Cosmos;
-using Microsoft.Azure.Cosmos;
+﻿using Azure.Core;
+using Azure.Cosmos;
 using System;
 
 namespace CosmosDbFramework.Options.Builders
@@ -26,6 +26,37 @@ namespace CosmosDbFramework.Options.Builders
         public CosmosDbOptionBuilder AuthKeyOrResourceToken(string authKeyOrResourceToken)
         {
             _cosmosDbOption.AuthKeyOrResourceToken = authKeyOrResourceToken;
+            return this;
+        }
+
+        public CosmosDbOptionBuilder ApplicatonRegion(string region)
+        {
+            _cosmosClientSettings.ApplicationRegion = string.IsNullOrEmpty(region) ? Regions.WestEurope : region;
+            return this;
+        }
+
+        /// <summary>
+        /// Default Settings:
+        /// - Connection Mode: Direct
+        /// - MaxRetryAttemptsOnRateLimitedRequests: 5
+        /// - MaxRetryWaitTimeOnRateLimitedRequests: 15s
+        /// - SerializerOptions(CosmosSerializationOptions).IgnoreNullValues: false
+        /// - SerializerOptions(CosmosSerializationOptions).Indented: true
+        /// - SerializerOptions(CosmosSerializationOptions).PropertyNamingPolicy: CamelCase
+        /// </summary>
+        /// <returns></returns>
+        public CosmosDbOptionBuilder AddDefaultSettings()
+        {
+            _cosmosClientSettings.ConnectionMode = ConnectionMode.Direct;
+            _cosmosClientSettings.MaxRetryAttemptsOnRateLimitedRequests = 5;
+            _cosmosClientSettings.MaxRetryWaitTimeOnRateLimitedRequests = TimeSpan.FromSeconds(15);
+            _cosmosClientSettings.SerializerOptions = new CosmosSerializationOptions
+            {
+                IgnoreNullValues = false,
+                Indented = true,
+                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+            };
+            _cosmosDbOption.Settings = _cosmosClientSettings;
             return this;
         }
 
