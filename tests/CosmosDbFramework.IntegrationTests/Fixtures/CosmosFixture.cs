@@ -15,15 +15,7 @@ namespace CosmosDbFramework.IntegrationTests.Fixtures
                 {
                     config.Endpoint("https://localhost:8081");
                     config.AuthKeyOrResourceToken("C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
-                    config.Configure(options =>
-                    {
-                        options.SerializerOptions = new CosmosSerializationOptions
-                        {
-                            IgnoreNullValues = false,
-                            Indented = true,
-                            PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-                        };
-                    });
+                    config.AddDefaultSettings();
                 })
                 .BuildServiceProvider();
 

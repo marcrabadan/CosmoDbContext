@@ -6,7 +6,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -52,20 +54,29 @@ namespace CosmosDbFramework
             {
                 return await _container.ReadItemAsync<TDocument>(id, new PartitionKey(partitionKey), cancellationToken: cancellationToken);
             }
-            catch (Exception)
+            catch (CosmosException ce) when (ce.StatusCode == HttpStatusCode.NotFound)
             {
                 return default;
             }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public AsyncPageable<TDocument> GetItemQueryIteratorGetItemQueryIterator<T>(string queryText = null, string continuationToken = null, QueryRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public AsyncPageable<TDocument> GetItemQueryIterator(string queryText = null, string continuationToken = null, QueryRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return _container.GetItemQueryIterator<TDocument>(queryText, continuationToken, requestOptions, cancellationToken);
         }
-
+        
         public AsyncPageable<TDocument> GetItemQueryIterator(QueryDefinition queryDefinition, string continuationToken = null, QueryRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return _container.GetItemQueryIterator<TDocument>(queryDefinition, continuationToken, requestOptions, cancellationToken);
+        }
+
+        public AsyncPageable<TDocument> WhereQueryIterator(Expression<Func<TDocument, bool>> predicate, string continuationToken = null, QueryRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return _container.GetItemQueryIterator<TDocument>(predicate.GetCosmosDbQuery(_configurationSource.Model.ContainerName), continuationToken, requestOptions, cancellationToken);
         }
 
         public Task UpsertItemAsync(TDocument entity, CancellationToken cancellationToken = default)
@@ -100,6 +111,9 @@ namespace CosmosDbFramework
         private PartitionKey GetPartitionKeyValue(TDocument entity)
         {
             var partitionKey = _configurationSource.Model.PartitionKey;
+            if (partitionKey == default)
+                return default;
+
             var partitionKeyValue = entity.GetPartitionKeyValue(partitionKey);
             return new PartitionKey(partitionKeyValue.ToString());
         }

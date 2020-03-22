@@ -18,6 +18,8 @@ namespace CosmosDbFramework.IntegrationTests.Documents
 
         public string Locality { get; set; }
 
+        public DateTime Created { get; set; }
+
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
